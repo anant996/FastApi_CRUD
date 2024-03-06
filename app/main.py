@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.endpoints.user_endpoint import router as demo_router
+from app.endpoints.user_endpoints import router as demo_router
 
 app = FastAPI(
     title="CRUD",
