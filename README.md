@@ -14,6 +14,43 @@ The CRUD API is designed to provide a simple yet powerful interface for managing
 - Delete user records
 - Retrieve all user records
 
+## Dependencies
+ 
+1. Pydantic: Pydantic is a powerful data validation and settings management library for Python. It allows you to define data schemas and validate input data against those schemas. In this repository, Pydantic is utilized extensively for data validation.
+   
+      In this repo i am using pydantic's base model for data validation.
+   
+      Base Model:
+      Pydantic provides a BaseModel class, which serves as the foundation for defining data models with validation rules.
+      
+      User Model Example:
+      ```
+      from pydantic import BaseModel, Field
+      
+      class User(BaseModel):
+          id: int = Field(..., gt=0, description="User ID must be greater than zero")
+          name: str = Field(..., min_length=1, max_length=100, description="User name must be between 1 and 100 characters")
+      ```
+      id: An integer representing the user ID. It is validated to be greater than zero.
+   
+      name: A string representing the user's name. It is validated to be between 1 and 100 characters in length.
+
+2. APIRouter: APIRouter is a fastapi utility that helps in organizing API endpoints and handling requests in FastAPI applications. It allows you to define routes for different HTTP methods and group related endpoints together.
+   
+3. HTTPException: HTTPException is an exception class provided by FastAPI for handling HTTP errors. It allows you to raise HTTP errors with specific status codes and error messages, which are automatically translated into appropriate HTTP responses.
+
+      Commonly Used HTTP Status Codes:
+   
+      **400 Bad Request**: The server cannot process the request due to a client error, such as syntax error or invalid parameters.
+      
+      **401 Unauthorized**: The request lacks valid authentication credentials or authorization for the requested resource.
+      
+      **404 Not Found**: The server cannot find the requested resource. It may be removed, renamed, or temporarily unavailable.
+      
+      **200 OK**: The request has succeeded, and the server has returned the requested content.
+      
+      **500 Internal Server Error**: A generic error message indicating that something has gone wrong on the server's end. It is often used for unexpected errors that are not handled by specific error codes.
+
 ## Project Structure
 
 ```
@@ -34,6 +71,7 @@ FastApi_CRUD/
 ├── .gitignore
 └── requirements.txt
 └── README.md
+└── setup.py
 
 ```
 
