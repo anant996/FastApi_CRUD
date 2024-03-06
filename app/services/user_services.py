@@ -1,5 +1,5 @@
 from fastapi import HTTPException, status
-from app.utils.demo_db import demo_db
+from app.utils.dummy_db import demo_db
 
 async def create_user(user_id:int, name:str):
     if user_id in demo_db:
@@ -32,3 +32,5 @@ async def all_users():
     if not demo_db:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No users found")
     return demo_db, status.HTTP_200_OK
+
+
