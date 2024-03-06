@@ -21,13 +21,13 @@ FastApi_CRUD/
 ├── app/
 │ ├── endpoints/
 │ │ ├── __init__.py
-│ │ └── demo.py
+│ │ └── user_endpoints.py
 │ ├── services/
 │ │ ├── __init__.py
-│ │ └── demo.py
+│ │ └── user_services.py
 │ ├── utils/
 │ │ ├── __init__.py
-│ │ └── demo_db.py
+│ │ └── dummy_db.py
 │ ├── __init__.py
 │ └── main.py
 │ └── models.py
