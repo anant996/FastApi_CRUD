@@ -1,6 +1,7 @@
 from typing import Annotated
+from pydantic import  EmailStr
 from fastapi import Depends, APIRouter
-from app.services.user_services import create_user, get_user, update_user, delete_user, all_users
+from app.services.user_services import create_user, get_user, update_user, delete_user, all_users, get_users_by_name, get_user_by_nameemail
 from app.models import User
 
 router = APIRouter()
@@ -26,7 +27,7 @@ async def create_user_endpoint(request: Annotated[User, Depends()]):
     Returns:
     - dict: Response message and user details.
     """
-    return await create_user(request.id, request.name)
+    return await create_user(request.id, request.name, request.email)
 
 @router.get("/user/{user_id}")
 async def get_user_endpoint(user_id:int):
@@ -52,7 +53,7 @@ async def update_user_endpoint(request: Annotated[User, Depends()]):
     Returns:
     - dict: Response message and updated user details.
     """
-    return await update_user(request.id, request.name)
+    return await update_user(request.id, request.name, request.email)
 
 @router.delete("/user/{user_id}")
 async def delete_user_endpoint(user_id:int):
@@ -76,4 +77,32 @@ async def all_users_endpoint():
     - dict: User details.
     """
     return await all_users()
+
+@router.get("/users/{name}")
+async def get_users_byname_endpoint(name: str): 
+    """
+    Retrieves user details by name.
+
+    Args:
+    - name: Name of the user to retrieve.
+
+    Returns:
+    - dict: User details.
+    """
+    return await get_users_by_name(name)  
+
+@router.get("/user")
+async def get_user_bynameemail_endpoint(name: str, email: EmailStr): 
+    """
+    Retrieves user details by name and email.
+
+    Args:
+    - name: Name of the user to retrieve.
+    - email: Email of the user to retrieve.
+
+    Returns:
+    - dict: User details.
+    """
+    return await get_user_by_nameemail(name, email)  
+
 
