@@ -4,9 +4,6 @@ from app.utils.dummy_db import demo_db
 
 client = TestClient(app)
 
-# def setup_function():
-#     demo_db.clear()
-    
 def test_homepage():
     response = client.get("/")
     assert response.status_code == 200
@@ -56,10 +53,3 @@ def test_delete_from_db():
     print(response.json())
     assert response.status_code == 200
     assert response.json() == [{'message': 'User deleted successfully'}, 200]
-
-# setup_function()
-# print(demo_db)
-# test_create_db()
-# test_get_user_by_id()
-# test_update_db()
-# test_delete_from_db()
