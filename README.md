@@ -114,3 +114,16 @@ cd app
 python3 -m uvicorn main:app --reload
 ```
 
+## Testing
+
+The project includes comprehensive unit tests to ensure the functionality and reliability of the CRUD API endpoints. These tests are written using pytest and the `TestClient` provided by FastAPI for testing API endpoints.
+
+
+### Running Tests
+
+To run the tests, navigate to the project directory and execute the following command:
+
+```
+cd FastApi_CRUD
+pytest
+```
