@@ -14,7 +14,7 @@ async def welcome():
     Returns:
     - str: Welcome message with URL for testing.
     """
-    return "Welcome to the homepage. Go to [Swagger UI](http://127.0.0.1:8000/docs) for testing."
+    return {"message":"Welcome to the homepage. Go to [Swagger UI](http://127.0.0.1:8000/docs) for testing."}
 
 @router.post("/user")
 async def create_user_endpoint(request: Annotated[User, Depends()]):
@@ -48,7 +48,7 @@ async def update_user_endpoint(request: Annotated[User, Depends()]):
     Updates user details.
 
     Args:
-    - request (Annotated[User, str, Depends()]): ID of the user to update and new name.
+    - request (Annotated[User, str, Depends()]): ID of the user to update name and email.
 
     Returns:
     - dict: Response message and updated user details.
