@@ -1,3 +1,4 @@
 __pycache__/
 venv/
 anant.egg-info/
+.pytest_cache/
